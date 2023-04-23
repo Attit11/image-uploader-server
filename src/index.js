@@ -2,10 +2,14 @@ const express = require("express");
 const upload = require("../uploader/upload");
 const Image = require("./model/image");
 require("../src/mongoose/db");
+const cors = require('cors')
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.use(cors())
+app.use(express.json())
 app.post(
   "/upload-image",
   upload.single("image"),
